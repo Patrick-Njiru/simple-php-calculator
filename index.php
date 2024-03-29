@@ -1,10 +1,10 @@
 <?php
 function myCalculator($num1, $oper, $num2)
 {
-  settype($num1, 'float');
-  settype($num2, 'float');
-
-  $sum = 0;
+  settype($num1, 'integer');
+  settype($num2, 'integer');
+  $sum = 'Error!';
+  
   if ($oper == 'add') $sum = $num1 + $num2;
   elseif ($oper == 'subtract') $sum = $num1 - $num2;
   elseif ($oper == 'divide') $sum = $num1 / $num2;
@@ -13,7 +13,7 @@ function myCalculator($num1, $oper, $num2)
 }
 
 $num1 = $_GET['num1'];
-$oper = $_GET['operation'];
+$oper = $_GET['op'];
 $num2 = $_GET['num2'];
 
 ?>
@@ -34,14 +34,14 @@ $num2 = $_GET['num2'];
       <legend>My Calculator</legend>
       <p class="results"><?php echo myCalculator($num1, $oper, $num2) ?></p>
       <div class="inputs">
-        <input type="text" name="num1" id="num1" placeholder="X">
-        <select name="operation" id="oper">
-          <option value="add" default>+</option>
+        <input type='number' default=0 name="num1" placeholder="X">
+        <select name="op">
+          <option value="add">+</option>
           <option value="subtract">-</option>
           <option value="multiply">*</option>
           <option value="divide">/</option>
         </select>
-        <input type="text" name="num2" id="num2" placeholder="Y">
+        <input type='number' name="num2" placeholder="Y">
       </div>
       <button type="submit">Calculate!</button>
     </form>
